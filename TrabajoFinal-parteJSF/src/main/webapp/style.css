@@ -1,0 +1,61 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #E9EAEC;
+}
+
+.sidebar_nav {
+    height: 100%;
+    width: 160px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #000;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+.sidebar_nav a{
+    padding: 16px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #fff;
+    display: block;
+    text-align: justify;
+}
+
+.sidebar_nav a:hover{
+    color: #000;
+    font-weight: 700;
+    background-color: #ebd409;
+    border-radius: 10px;
+}
+
+.sidebar_nav i{
+    margin-right: 5px;
+}
+
+.side_content {
+    margin-left: 160px;
+    height: 100%;
+    width: 1340px;
+    
+}
+
+.bg_inicio {
+    background-image: url("fotos/fondo.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.mission-section {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    padding: 40px;
+    background-color: rgba(233, 234, 236,0.8);
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin: 80px auto;
+    max-width: 600px;
+}

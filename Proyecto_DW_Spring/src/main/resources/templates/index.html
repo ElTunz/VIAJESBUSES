@@ -1,0 +1,72 @@
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>LISTADO DE CHOFERES</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+        <link th:href="@{/css/estilo_transporte2.css}" rel="styleSheet">
+    </head>
+    <body>
+        <div>
+            <center>
+                <br><h2>Listado de Choferes</h2><br>
+                <a th:href="@{/new}">Agregar chofer</a><br><br>
+                <table id="tabla">
+                    <thead>
+                        <tr>
+                            <th>Codigo<th>Nombre<th>Fecha Contratacion<th>Categoria<th>Sueldo<th>Imagen<th>Mod<th>Del
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="per:${listado}">
+                            <td th:text="${per.IDCOD}"></td>
+                            <td th:text="${per.CHONOM}"></td>
+                            <td th:text="${per.CHOFIN}"></td>
+                            <td th:text="${per.CHOCAT}"></td>
+                            <td th:text="${per.CHOSBA}"></td>
+                            <td><img th:src="@{/css/{imageName}(imageName=${per.IDCOD + '.jpg'})}" width="100" height="100" alt="Imagen"></td>
+                            <td><a th:href="@{/editar/}+${per.IDCOD}">Modificar</a></td>
+                            <td><a th:href="@{/eliminar/}+${per.IDCOD}">Eliminar</a></td>
+                        </tr>
+                    </tbody>
+                    <tr><td colspan="4">Total pago a choferes: <td th:text="${total}"><td colspan="4">
+                </table>
+                <a onclick="previousPage()">Anterior</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a onclick="nextPage()">Siguiente</a>
+            </center><br><br>
+        </div>
+
+        <script>
+            let currentPage = 0;
+            const rowsPerPage = 5;
+
+            const table = document.getElementById('tabla');
+            const rows = table.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+
+            function showPage(page) {
+                for (let i = 0; i < rows.length; i++) {
+                    if (i >= page * rowsPerPage && i < (page + 1) * rowsPerPage) {
+                        rows[i].style.display = 'table-row';
+                    } else {
+                        rows[i].style.display = 'none';
+                    }
+                }
+            }
+
+            function nextPage() {
+                if ((currentPage + 1) * rowsPerPage < rows.length) {
+                    currentPage++;
+                    showPage(currentPage);
+                }
+            }
+
+            function previousPage() {
+                if (currentPage > 0) {
+                    currentPage--;
+                    showPage(currentPage);
+                }
+            }
+
+            showPage(currentPage);
+        </script>
+    </body>
+</html>

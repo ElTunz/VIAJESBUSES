@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      >
+    <h:head>
+        <title>Facelet Title</title>
+        <style>
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+            }
+            .combo {
+                height: 35px;
+                font-size: 17px;
+                padding: 5px;
+            }
+        </style>
+        
+    </h:head>
+    <h:body>
+        <center>
+        <h:form id="fr1">
+            <p:outputLabel value="Ruta: "/>
+            <h:selectOneMenu value="#{control1.rut.rutacod}" class="combo">
+                <f:selectItem itemLabel="--elegir--"/>
+                <f:selectItems value="#{control1.lisrut}"/>
+            </h:selectOneMenu>
+            
+            <br></br><br></br>
+            <p:commandButton value="Ver viajes" action="#{control1.conViajes()}"
+                                     update=":fr2">
+                     </p:commandButton>
+            <br></br><br></br>
+        </h:form>
+        <h:form id="fr2">
+            <p:dataTable value="#{control1.lisvia}" var="via">
+                    <p:column headerText="NumViaje">
+                        <p:outputLabel value="#{via.viajeNro}"/>
+                    </p:column>
+                    <p:column headerText="Fecha">
+                        <p:outputLabel value="#{via.viajeFechas}"/>
+                    </p:column>
+                    <p:column headerText="Horas">
+                        <p:outputLabel value="#{via.viajeHoras}"/>
+                    </p:column>
+                    <p:column headerText="Costo">
+                        <p:outputLabel value="#{via.costoViaje}"/>
+                    </p:column> 
+                    <p:column headerText="Ver">
+                        <p:commandLink value="Pasajeros" actionListener="#{control1.conPasajeros(via)}" update=":fr3"/>
+                    </p:column>
+                </p:dataTable>
+        </h:form>
+            <br></br><br></br>
+        <h:form id="fr3">
+            <p:panelGrid columns="1">
+                <p:outputLabel value="Numero de viaje: #{control1.numvia}"/>
+                </p:panelGrid>
+            <p:dataTable value="#{control1.lispas}" var="pas">
+                    <p:column headerText="NroBoleta">
+                        <p:outputLabel value="#{pas.num_boleta}"/>
+                    </p:column>
+                    <p:column headerText="Nombres">
+                        <p:outputLabel value="#{pas.nom_pasajero}"/>
+                    </p:column>
+                    <p:column headerText="Pago total">
+                        <p:outputLabel value="#{pas.pago_total}"/>
+                    </p:column>
+                </p:dataTable>
+        </h:form>
+            
+        </center>
+    </h:body>
+</html>
+

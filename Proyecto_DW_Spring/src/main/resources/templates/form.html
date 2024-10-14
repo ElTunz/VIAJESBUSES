@@ -1,0 +1,93 @@
+<html mlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="ISO-8859-1">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>FORMULARIO</title>
+        <link th:href="@{/css/estilo_transporte2.css}" rel="styleSheet">
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f4f4f4;
+                margin: 0;
+                padding: 0;
+            }
+
+            .container {
+                width: 60%;
+                margin: 0 auto;
+                padding: 20px;
+                background-color: #fff;
+                border-radius: 8px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+
+            h3 {
+                margin-top: 0;
+                color: #333;
+            }
+
+            form label {
+                display: block;
+                margin-bottom: 5px;
+            }
+
+            input[type="text"] {
+                width: 100%;
+                padding: 8px;
+                margin-bottom: 10px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+            }
+
+            input[type="submit"] {
+                background-color: #007bff;
+                color: #fff;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+
+            input[type="submit"]:hover {
+                background-color: #0056b3;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <div class="container">
+                <form th:action="@{/save}" method="Post" th:object="${persona}">
+                    <div>
+                        <center><h4><div th:text="${titulo}"></div><br></h4></center>
+                        <h5>Datos del Chofer: </h5>
+                        <div class"card-body">
+                            <div>
+                                <label>Codigo</label>
+                                <input type="text" th:field="*{IDCOD}" readonly>
+                            </div>
+                            <div>
+                                <label>Nombre</label>
+                                <input type="text" th:field="*{CHONOM}">
+                            </div>
+                            <div>
+                                <label>Fecha de Contratacion</label>
+                                <input type="text" th:field="*{CHOFIN}">
+                            </div>
+                            <div>
+                                <label>Categoria</label>
+                                <input type="text" th:field="*{CHOCAT}">
+                            </div>
+                            <div>
+                                <label>Sueldo</label>
+                                <input type="text" th:field="*{CHOSBA}">
+                            </div>
+                        </div>
+                        <div>
+                            <center><input type="submit" value="Guardar"></center>
+                        </div>
+                    </div>
+                </form>    
+            </div>
+        </div>
+    </body>
+</html>
